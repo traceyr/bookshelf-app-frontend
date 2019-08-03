@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import BookList from './BookList';
-import books from '../apis/books.js';
 import axios from 'axios';
 
 class App extends Component {
