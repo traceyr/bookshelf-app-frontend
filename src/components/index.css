@@ -1,0 +1,27 @@
+body {
+  background-color: #1A1D1A;
+  color: #8AB0AB;
+}
+
+div .segment.ui {
+  background-color: #1A1D1A;
+  border: 5px double #26413C;
+
+}
+
+.ui.inverted.form .field>label,
+.ui.inverted.form .grouped.fields>label,
+.ui.inverted.form .ui.checkbox label {
+  color: #8AB0AB;
+  font-size: 13px;
+}
+
+.ui.inverted.menu .item {
+  color: #8AB0AB;
+  font-size: 18px;
+}
+
+.ui.top.attached.menu>.item:first-child {
+  color: #26413C;
+  font-size: 20px;
+}

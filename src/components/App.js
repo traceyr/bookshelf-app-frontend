@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import BookList from './BookList';
+import Header from './Header';
+import './index.css'
 import axios from 'axios';
 
 class App extends Component {
@@ -9,11 +11,10 @@ class App extends Component {
     booksByAuthor: []
   }
 
-  onTermSubmit = (term) => {
-    console.log('Submitted and did nothing');
-    console.log(term);
+  onTermSubmit = (term, searchBy) => {
     axios.post('/api/hello', {
-      term: term
+      term: term,
+      searchBy: searchBy
     })
     .then(res => {
       let results = res.data.GoodreadsResponse.search.results.work;
@@ -24,6 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="ui container">
+        <Header />
         <SearchBar onFormSubmit={this.onTermSubmit} />
         <BookList books={this.state.booksByAuthor} />
       </div>
