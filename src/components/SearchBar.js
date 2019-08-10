@@ -19,7 +19,6 @@ class SearchBar extends React.Component {
 
     this.props.onFormSubmit(this.state.term, this.state.searchBy);
     this.setState({term: '', searchBy: ''});
-    this.unCheck();
   };
 
   render() {
