@@ -8,13 +8,12 @@ class BookDetail extends React.Component {
       displayBook: null
     }
   }
-  // state = { displayBook: [] };
 
   componentDidMount() {
     let pathWithId = this.props.location.pathname
     let bookId = pathWithId.substr(pathWithId.lastIndexOf('/') + 1);
     console.log(this.props.location.state)
-    axios.post('/api/bookDetails', {
+    axios.post('/api/bookSearch/:id', {
       id: bookId
     })
     .then(res => {
@@ -41,7 +40,7 @@ class BookDetail extends React.Component {
                 <img src={bookDeets.image_url._text} className="ui small image"/>
               </div>
               <div className="ten wide column">
-                <h2 className="ui header">Title: {bookDeets.title._text}</h2>
+                <h2 className="ui header">Title: {bookDeets.title._text || bookDeets.title._cdata}</h2>
                 <h3>Author: {bookDeets.authors.author.name._text}</h3>
                 <h3>Average Rating: {bookDeets.average_rating._text}</h3>
                 <h5>ISBN Number: {bookDeets.isbn13._cdata}</h5>

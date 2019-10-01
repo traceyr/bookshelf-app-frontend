@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    axios.post('/api/hello', {
+    axios.post('/api/bookSearch', {
       term: this.state.term,
       searchBy: this.state.searchBy
     })
