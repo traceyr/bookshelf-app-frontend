@@ -21,7 +21,7 @@ div .segment.ui {
   font-size: 18px;
 }
 
-.ui.top.attached.menu>.item:first-child {
+#myTitle {
   color: #26413C;
-  font-size: 20px;
+  font-size: 24px;
 }

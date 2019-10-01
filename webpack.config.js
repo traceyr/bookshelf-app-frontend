@@ -1,4 +1,5 @@
 module.exports = {
+  endtry: './src/index.js',
   module: {
     rules: [
       {
@@ -9,5 +10,13 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    extentions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
   }
 }

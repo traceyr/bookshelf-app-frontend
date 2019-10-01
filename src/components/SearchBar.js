@@ -1,9 +1,12 @@
 import React from 'react';
+import axios from 'axios';
+import BookList from './BookList';
 
 class SearchBar extends React.Component {
   state = {
     term: '',
-    searchBy: ''
+    searchBy: '',
+    bookslist: []
    };
 
   onSelectedBox = (event) => {
@@ -16,8 +19,15 @@ class SearchBar extends React.Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-
-    this.props.onFormSubmit(this.state.term, this.state.searchBy);
+    axios.post('/api/hello', {
+      term: this.state.term,
+      searchBy: this.state.searchBy
+    })
+    .then(res => {
+      let results = res.data.GoodreadsResponse.search.results.work;
+      // console.log(results);
+      this.setState({ bookslist: results });
+    })
     this.setState({term: '', searchBy: ''});
   };
 
@@ -54,6 +64,7 @@ class SearchBar extends React.Component {
               onChange={this.onInputChange} />
           </div>
         </form>
+        <BookList books={this.state.bookslist} />
       </div>
     );
   }

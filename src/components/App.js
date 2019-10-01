@@ -1,33 +1,22 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import BookList from './BookList';
+import BookDetail from './BookDetail';
 import Header from './Header';
 import './index.css'
-import axios from 'axios';
 
 class App extends Component {
-
-  state = {
-    booksByAuthor: []
-  }
-
-  onTermSubmit = (term, searchBy) => {
-    axios.post('/api/hello', {
-      term: term,
-      searchBy: searchBy
-    })
-    .then(res => {
-      let results = res.data.GoodreadsResponse.search.results.work;
-      this.setState({ booksByAuthor: results });
-    })
-  }
 
   render() {
     return (
       <div className="ui container">
         <Header />
-        <SearchBar onFormSubmit={this.onTermSubmit} />
-        <BookList books={this.state.booksByAuthor} />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={SearchBar} />
+            <Route path="/book/:id" component={BookDetail} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
